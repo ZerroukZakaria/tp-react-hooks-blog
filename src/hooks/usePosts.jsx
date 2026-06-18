@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import useDebounce from './useDebounce';
 
 function usePosts({
   searchTerm = '',
@@ -10,6 +11,7 @@ function usePosts({
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const debouncedSearchTerm = useDebounce(searchTerm, 500);
 
   const fetchPosts = async () => {
 
@@ -20,8 +22,8 @@ function usePosts({
 
       let url = 'https://dummyjson.com/posts';
 
-      if (searchTerm.trim()) {
-        url = `https://dummyjson.com/posts/search?q=${searchTerm}`;
+      if (debouncedSearchTerm.trim()) {
+        url = `https://dummyjson.com/posts/search?q=${debouncedSearchTerm}`;
       }
 
       const response = await fetch(url);
@@ -50,7 +52,7 @@ function usePosts({
 
     fetchPosts();
 
-  }, [searchTerm]);
+  }, [debouncedSearchTerm]);
 
   return {
     posts,

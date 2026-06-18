@@ -75,15 +75,36 @@ Difficultés rencontrées :
 ### Exercice 2 : Hooks Personnalisés
 #### Objectif : Créer des hooks réutilisables
 
-- [ ] 2.1 Créer le hook `useDebounce` pour optimiser la recherche
-- [ ] 2.2 Créer le hook `useLocalStorage` pour persister les préférences utilisateur
-- [ ] 2.3 Utiliser ces hooks dans l'application
-- [ ] 2.4 Documenter votre solution ici
+- [x] 2.1 Créer le hook `useDebounce` pour optimiser la recherche
+- [x] 2.2 Créer le hook `useLocalStorage` pour persister les préférences utilisateur
+- [x] 2.3 Utiliser ces hooks dans l'application
+- [x] 2.4 Documenter votre solution ici
 
 _Votre réponse pour l'exercice 2 :_
 ```
 Expliquez votre solution ici
 [Ajoutez vos captures d'écran]
+
+1. useDebounce :
+   - Ce hook permet de retarder la mise à jour d'une valeur pendant un certain délai.
+   - Il est utilisé pour la recherche afin d'éviter d'envoyer une requête API à chaque frappe de l'utilisateur.
+   - Grâce à ce hook, la recherche est plus fluide et les appels réseau sont réduits.
+
+2. useLocalStorage :
+   - Ce hook permet de stocker et récupérer des données dans le localStorage du navigateur.
+   - Il est utilisé pour sauvegarder les préférences de l'utilisateur concernant le mode d'affichage.
+   - Les préférences restent conservées même après le rechargement de la page.
+
+Intégration dans l'application :
+- Le hook useDebounce a été intégré dans usePosts afin d'optimiser les recherches.
+- Le hook useLocalStorage a été utilisé pour mémoriser le mode de navigation sélectionné par l'utilisateur.
+
+Difficultés rencontrées :
+- Comprendre le fonctionnement du nettoyage des timers avec clearTimeout dans useDebounce.
+- Gérer correctement la lecture et l'écriture des données JSON dans localStorage.
+
+![exercice 2](docs/screenshots/exercise1.png)
+
 ```
 
 ### Exercice 3 : Optimisation et Context

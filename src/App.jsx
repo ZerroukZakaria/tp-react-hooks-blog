@@ -3,6 +3,7 @@ import './App.css';
 import PostList from './components/PostList';
 import PostSearch from './components/PostSearch';
 import usePosts from './hooks/usePosts';
+import useLocalStorage from './hooks/useLocalStorage';
 // TODO: Exercice 3 - Importer ThemeToggle
 // TODO: Exercice 3 - Importer ThemeProvider et useTheme
 // TODO: Exercice 1 - Importer le hook usePosts
@@ -11,6 +12,8 @@ import usePosts from './hooks/usePosts';
 function App() {
   // État local pour la recherche
   const [searchTerm, setSearchTerm] = useState('');
+  const [infiniteScroll, setInfiniteScroll] =
+  useLocalStorage('infiniteScroll', true);
   // TODO: Exercice 4 - Ajouter l'état pour le tag sélectionné
   
   const {
@@ -42,6 +45,22 @@ function App() {
       </header>
       
       <main>
+        <div className="mb-3">
+
+        <button
+          className="btn btn-outline-primary"
+          onClick={() =>
+            setInfiniteScroll(!infiniteScroll)
+          }
+        >
+          Mode :
+          {' '}
+          {infiniteScroll
+            ? 'Défilement infini'
+            : 'Bouton Charger plus'}
+        </button>
+
+      </div>
         <PostSearch onSearch={handleSearchChange} />
         
           {error && (
@@ -55,6 +74,7 @@ function App() {
         <PostList
           posts={posts}
           loading={loading}
+          infiniteScroll={infiniteScroll}
         />
       </main>
       
