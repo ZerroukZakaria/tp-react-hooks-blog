@@ -67,7 +67,7 @@ Difficultés rencontrées :
 - L'API DummyJSON renvoie maintenant reactions sous forme d'objet {likes, dislikes} au lieu d'un nombre.
 - Le problème a été résolu en affichant séparément les likes et les dislikes.
 
-![Exercice 1](docs/screenshots/exercise1.png)
+![exercice 1](docs/screenshots/exercise1.png)
 
 
 ```
@@ -103,22 +103,49 @@ Difficultés rencontrées :
 - Comprendre le fonctionnement du nettoyage des timers avec clearTimeout dans useDebounce.
 - Gérer correctement la lecture et l'écriture des données JSON dans localStorage.
 
-![exercice 2](docs/screenshots/exercise1.png)
+![exercice 2](docs/screenshots/exercise2.png)
 
 ```
 
 ### Exercice 3 : Optimisation et Context
 #### Objectif : Gérer le thème global et optimiser les rendus
 
-- [ ] 3.1 Créer le `ThemeContext` pour gérer le thème clair/sombre
-- [ ] 3.2 Implémenter le composant `ThemeToggle`
-- [ ] 3.3 Utiliser `useCallback` et `useMemo` pour optimiser les performances
-- [ ] 3.4 Documenter votre solution ici
+- [x] 3.1 Créer le `ThemeContext` pour gérer le thème clair/sombre
+- [x] 3.2 Implémenter le composant `ThemeToggle`
+- [x] 3.3 Utiliser `useCallback` et `useMemo` pour optimiser les performances
+- [x] 3.4 Documenter votre solution ici
 
 _Votre réponse pour l'exercice 3 :_
 ```
 Expliquez votre solution ici
 [Ajoutez vos captures d'écran]
+
+### Exercice 3 : Optimisation et Context
+
+J'ai créé un ThemeContext pour gérer un thème clair/sombre dans toute l'application.
+
+Le thème est sauvegardé dans localStorage grâce au hook useLocalStorage afin de conserver la préférence utilisateur après le rechargement de la page.
+
+J'ai ajouté un composant ThemeToggle permettant de basculer facilement entre les deux thèmes.
+
+Pour optimiser les performances :
+- useCallback a été utilisé pour mémoriser les gestionnaires d'événements.
+- useMemo a été utilisé pour calculer la liste des tags uniques.
+- React.memo a été utilisé sur les composants PostList et PostSearch afin d'éviter les rendus inutiles.
+
+Difficultés rencontrées :
+- Gestion du contexte React et de la persistance du thème.
+- Compréhension de l'utilisation de useMemo et React.memo pour optimiser les performances.
+
+Solution :
+- Création d'un ThemeContext réutilisable.
+- Sauvegarde du thème dans localStorage.
+- Optimisation des composants avec les hooks React appropriés.
+
+![exercice 3](docs/screenshots/exercise3ng)
+
+
+
 ```
 
 ### Exercice 4 : Fonctionnalités avancées

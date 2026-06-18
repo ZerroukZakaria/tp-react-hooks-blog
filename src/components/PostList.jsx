@@ -121,4 +121,4 @@ function PostList({
   );
 }
 
-export default PostList;
+export default React.memo(PostList);

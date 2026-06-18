@@ -67,4 +67,4 @@ function PostSearch({
   );
 }
 
-export default PostSearch;
+export default React.memo(PostSearch);

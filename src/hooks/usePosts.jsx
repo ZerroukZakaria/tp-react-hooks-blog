@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import useDebounce from './useDebounce';
 
 function usePosts({
@@ -12,6 +12,16 @@ function usePosts({
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const debouncedSearchTerm = useDebounce(searchTerm, 500);
+
+  const availableTags = useMemo(() => {
+
+  const tags = posts.flatMap(
+    post => post.tags || []
+  );
+
+  return [...new Set(tags)];
+
+}, [posts]);
 
   const fetchPosts = async () => {
 
@@ -57,7 +67,8 @@ function usePosts({
   return {
     posts,
     loading,
-    error
+    error,
+    availableTags
   };
 }
 
