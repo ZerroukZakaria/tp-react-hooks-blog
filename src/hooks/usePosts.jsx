@@ -36,6 +36,10 @@ function usePosts({
         url = `https://dummyjson.com/posts/search?q=${debouncedSearchTerm}`;
       }
 
+      if (tag) {
+        url = `https://dummyjson.com/posts/tag/${tag}`;
+      }
+
       const response = await fetch(url);
 
       if (!response.ok) {

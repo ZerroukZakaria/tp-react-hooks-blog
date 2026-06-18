@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import LoadingSpinner from './LoadingSpinner';
+import useIntersectionObserver from '../hooks/useIntersectionObserver';
 
 function PostList({
   posts = [],
@@ -11,6 +12,9 @@ function PostList({
   infiniteScroll = true
 }) {
 
+
+
+  
   const handlePostClick = (post) => {
     if (onPostClick) {
       onPostClick(post);
@@ -24,6 +28,31 @@ function PostList({
       onTagClick(tag);
     }
   };
+
+
+  const [loadMoreRef, isIntersecting] =
+  useIntersectionObserver({
+    enabled: infiniteScroll
+  });
+
+
+useEffect(() => {
+
+  if (
+    isIntersecting &&
+    hasMore &&
+    onLoadMore
+  ) {
+    onLoadMore();
+  }
+
+}, [
+  isIntersecting,
+  hasMore,
+  onLoadMore
+]);
+
+  
 
   if (!loading && posts.length === 0) {
     return (
@@ -116,6 +145,8 @@ function PostList({
 
         </div>
       )}
+
+      <div ref={loadMoreRef}></div>
 
     </div>
   );

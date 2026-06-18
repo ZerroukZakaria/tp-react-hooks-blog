@@ -60,6 +60,35 @@ function PostSearch({
           </div>
 
         </div>
+        
+        <div className="col-md-4">
+
+          <select
+            className="form-select"
+            value={selectedTag}
+            onChange={(e) =>
+              onTagSelect(e.target.value)
+            }
+          >
+
+            <option value="">
+              Tous les tags
+            </option>
+
+            {availableTags.map((tag) => (
+
+              <option
+                key={tag}
+                value={tag}
+              >
+                {tag}
+              </option>
+
+            ))}
+
+          </select>
+
+        </div>
 
       </div>
 

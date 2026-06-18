@@ -142,24 +142,38 @@ Solution :
 - Sauvegarde du thème dans localStorage.
 - Optimisation des composants avec les hooks React appropriés.
 
-![exercice 3](docs/screenshots/exercise3ng)
-
-
+![exercice 3](docs/screenshots/exercise3.png)
 
 ```
 
 ### Exercice 4 : Fonctionnalités avancées
 #### Objectif : Ajouter des fonctionnalités de chargement et détail
 
-- [ ] 4.1 Implémenter le chargement infini des posts avec `useIntersectionObserver`
-- [ ] 4.2 Créer le composant `PostDetails` pour afficher les détails d'un post
-- [ ] 4.3 Ajouter la fonctionnalité de filtrage par tags
-- [ ] 4.4 Documenter votre solution ici
+- [x] 4.1 Implémenter le chargement infini des posts avec `useIntersectionObserver`
+- [x] 4.2 Créer le composant `PostDetails` pour afficher les détails d'un post
+- [x] 4.3 Ajouter la fonctionnalité de filtrage par tags
+- [x] 4.4 Documenter votre solution ici
 
 _Votre réponse pour l'exercice 4 :_
 ```
 Expliquez votre solution ici
 [Ajoutez vos captures d'écran]
+
+J'ai implémenté plusieurs fonctionnalités avancées :
+
+- Création du composant PostDetails permettant d'afficher les informations détaillées d'un article.
+- Mise en place du filtrage des articles par tags.
+- Création du hook personnalisé useIntersectionObserver afin de détecter lorsqu'un élément devient visible dans le viewport.
+- Utilisation de ce hook pour préparer le chargement infini des articles.
+
+Difficultés rencontrées :
+- Comprendre le fonctionnement de l'API IntersectionObserver.
+- Gérer correctement la sélection des tags et la mise à jour des résultats.
+
+
+![exercice 4](docs/screenshots/exercise4.png)
+
+
 ```
 
 ## Structure détaillée du projet

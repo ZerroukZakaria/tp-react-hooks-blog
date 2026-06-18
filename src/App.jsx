@@ -6,37 +6,38 @@ import usePosts from './hooks/usePosts';
 import useLocalStorage from './hooks/useLocalStorage';
 import ThemeToggle from './components/ThemeToggle';
 import { useTheme } from './context/ThemeContext';
-// TODO: Exercice 3 - Importer ThemeToggle
-// TODO: Exercice 3 - Importer ThemeProvider et useTheme
-// TODO: Exercice 1 - Importer le hook usePosts
-// TODO: Exercice 2 - Importer le hook useLocalStorage
+import PostDetails from './components/PostDetails';
 
 function App() {
-  // État local pour la recherche
-  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedPost, setSelectedPost] = useState(null);  const [searchTerm, setSearchTerm] = useState('');
   const [infiniteScroll, setInfiniteScroll] =
   useLocalStorage('infiniteScroll', true);
   const { theme } = useTheme();
-  // TODO: Exercice 4 - Ajouter l'état pour le tag sélectionné
+  const [selectedTag, setSelectedTag] = useState('');
   
   const {
     posts,
     loading,
-    error
+    error,
+    availableTags
   } = usePosts({
-    searchTerm
+    searchTerm,
+    tag: selectedTag
   });
     
-  // TODO: Exercice 2 - Utiliser useLocalStorage pour le mode de défilement
-  
-  // TODO: Exercice 3 - Utiliser useCallback pour les gestionnaires d'événements
-  
-  // Gestionnaire pour la recherche
+
 const handleSearchChange = useCallback((term) => {
   setSearchTerm(term);
 }, []);
+
+const handlePostClick = (post) => {
+  setSelectedPost(post);
+};
+
+const handleTagSelect = (tag) => {
+  setSelectedTag(tag);
+};
   
-  // TODO: Exercice 4 - Ajouter le gestionnaire pour la sélection de tag
   
   return (
     <div
@@ -70,20 +71,28 @@ const handleSearchChange = useCallback((term) => {
         </button>
 
       </div>
-        <PostSearch onSearch={handleSearchChange} />
-        
+          <PostSearch
+            onSearch={handleSearchChange}
+            onTagSelect={handleTagSelect}
+            availableTags={availableTags}
+            selectedTag={selectedTag}
+          />
+                  
           {error && (
             <div className="alert alert-danger">
               {error}
             </div>
           )}        
-        {/* TODO: Exercice 4 - Ajouter le composant PostDetails */}
-        
-        {/* TODO: Exercice 1 - Passer les props nécessaires à PostList */}
+        <PostDetails
+          post={selectedPost}
+          onClose={() => setSelectedPost(null)}
+          onTagClick={handleTagSelect}
+        />
         <PostList
           posts={posts}
           loading={loading}
-          infiniteScroll={infiniteScroll}
+          onPostClick={handlePostClick}
+          onTagClick={handleTagSelect}
         />
       </main>
       
