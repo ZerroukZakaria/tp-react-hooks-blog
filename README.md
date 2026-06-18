@@ -47,15 +47,29 @@ Pour chaque exercice :
 ### Exercice 1 : État et Effets 
 #### Objectif : Implémenter l'affichage et la recherche de posts
 
-- [ ] 1.1 Compléter le hook `usePosts` pour récupérer les posts depuis l'API dummyjson.com
-- [ ] 1.2 Implémenter le composant `PostList` pour afficher les posts
-- [ ] 1.3 Ajouter la fonctionnalité de recherche par titre ou contenu dans `PostSearch`
-- [ ] 1.4 Documenter votre solution ici
+- [x] 1.1 Compléter le hook `usePosts` pour récupérer les posts depuis l'API dummyjson.com
+- [x] 1.2 Implémenter le composant `PostList` pour afficher les posts
+- [x] 1.3 Ajouter la fonctionnalité de recherche par titre ou contenu dans `PostSearch`
+- [x] 1.4 Documenter votre solution ici
 
 _Votre réponse pour l'exercice 1 :_
 ```
 Expliquez votre solution ici
 [Ajoutez vos captures d'écran]
+
+J'ai implémenté le hook usePosts en utilisant useState et useEffect pour récupérer les articles depuis l'API DummyJSON.
+
+J'ai créé l'affichage des articles dans PostList sous forme de cartes Bootstrap affichant le titre, le contenu, les tags et les réactions.
+
+J'ai ajouté une barre de recherche dans PostSearch permettant de rechercher des articles par titre ou contenu grâce à l'API DummyJSON.
+
+Difficultés rencontrées :
+- L'API DummyJSON renvoie maintenant reactions sous forme d'objet {likes, dislikes} au lieu d'un nombre.
+- Le problème a été résolu en affichant séparément les likes et les dislikes.
+
+![Exercice 1](docs/screenshots/exercise1.png)
+
+
 ```
 
 ### Exercice 2 : Hooks Personnalisés
